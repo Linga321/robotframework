@@ -1,0 +1,1 @@
+['Annikki Hietala-Manninen', 'Kalervo Tanskanen-Anttila', 'Matti Lahtinen', 'Pentti Saari-Lindgren', 'Irmeli Leppänen'] encoding=UTF-8
