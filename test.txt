@@ -1,1 +1,4 @@
-['Annikki Hietala-Manninen', 'Kalervo Tanskanen-Anttila', 'Matti Lahtinen', 'Pentti Saari-Lindgren', 'Irmeli Leppänen'] encoding=UTF-8
+Kaija Penttinen 
+Lentokapteenin kuja 38 
+95723 
+ Helsinki

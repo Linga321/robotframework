@@ -1,27 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220324 16:48:37.531" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220325 17:15:37.934" rpa="false" schemaversion="2">
 <suite id="s1" name="Task1" source="C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\task1.robot">
-<test id="s1-t1" name="Test">
-<kw name="Set Variable" library="BuiltIn">
-<var>${number}</var>
-<arg>5</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220324 16:48:38.224" level="INFO">${number} = 5</msg>
-<status status="PASS" starttime="20220324 16:48:38.222" endtime="20220324 16:48:38.224"/>
+<test id="s1-t1" name="Remove an existing file">
+<kw name="Remove Existing Address File">
+<var>${state}</var>
+<arg>${filename}</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${file_Name}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220325 17:15:38.758" endtime="20220325 17:15:38.768"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${state}</var>
+<arg>File Should Not Exist</arg>
+<arg>${file_Name}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="File Should Not Exist" library="OperatingSystem">
+<arg>${file_Name}</arg>
+<doc>Fails if the given path points to an existing file.</doc>
+<msg timestamp="20220325 17:15:38.768" level="INFO" html="true">File '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;' does not exist.</msg>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<msg timestamp="20220325 17:15:38.768" level="INFO">${state} = True</msg>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<if>
+<branch type="IF" condition="${state} != ${true}">
+<kw name="Get File" library="OperatingSystem">
+<var>${FileContent}</var>
+<arg>${file_Name}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<kw name="Get Line" library="String">
+<var>${FileContent}</var>
+<arg>${FileContent}</arg>
+<arg>${0}</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<kw name="Remove File" library="OperatingSystem">
+<arg>${file_Name}</arg>
+<doc>Removes a file with the given path.</doc>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<kw name="File Should Not Exist" library="OperatingSystem">
+<arg>${file_Name}</arg>
+<doc>Fails if the given path points to an existing file.</doc>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>\n\n Display 5 Random Names</arg>
+<arg>\n\n Display name of the person whose data is removed in File \n ${FileContent}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220324 16:48:38.225" endtime="20220324 16:48:38.226"/>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
 </kw>
+<status status="NOT RUN" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</branch>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</if>
+<msg timestamp="20220325 17:15:38.768" level="INFO">${state} = True</msg>
+<status status="PASS" starttime="20220325 17:15:38.758" endtime="20220325 17:15:38.768"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${state}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.768"/>
+</kw>
+<doc>Remove Existing Address File, File name is Global</doc>
+<tag>faker</tag>
+<timeout value="1 minute"/>
+<status status="PASS" starttime="20220325 17:15:38.758" endtime="20220325 17:15:38.768"/>
+</test>
+<test id="s1-t2" name="Create a new address file">
 <kw name="Get Random Names">
-<var>${list}</var>
+<var>@{list}</var>
 <arg>${number}</arg>
 <kw name="Create List" library="BuiltIn">
 <var>@{list_of_name}</var>
 <doc>Returns a list containing given items.</doc>
-<msg timestamp="20220324 16:48:38.229" level="INFO">@{list_of_name} = [ ]</msg>
-<status status="PASS" starttime="20220324 16:48:38.228" endtime="20220324 16:48:38.229"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">@{list_of_name} = [ ]</msg>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.778"/>
 </kw>
 <for flavor="IN RANGE">
 <var>${i}</var>
@@ -32,219 +90,222 @@
 <kw name="Name" library="FakerLibrary">
 <var>${name}</var>
 <doc>:example 'John Doe'</doc>
-<msg timestamp="20220324 16:48:38.232" level="INFO">${name} = Annikki Hietala-Manninen</msg>
-<status status="PASS" starttime="20220324 16:48:38.230" endtime="20220324 16:48:38.232"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">${name} = Miika Savolainen</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.234" level="INFO">Length is 24</msg>
-<status status="PASS" starttime="20220324 16:48:38.232" endtime="20220324 16:48:38.234"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">Length is 16</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
 <kw name="Append To List" library="Collections">
 <arg>${list_of_name}</arg>
 <arg>${name}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20220324 16:48:38.234" endtime="20220324 16:48:38.236"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
-<status status="PASS" starttime="20220324 16:48:38.230" endtime="20220324 16:48:38.236"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </iter>
 <iter>
 <var name="${i}">1</var>
 <kw name="Name" library="FakerLibrary">
 <var>${name}</var>
 <doc>:example 'John Doe'</doc>
-<msg timestamp="20220324 16:48:38.238" level="INFO">${name} = Kalervo Tanskanen-Anttila</msg>
-<status status="PASS" starttime="20220324 16:48:38.237" endtime="20220324 16:48:38.238"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">${name} = Emilia Oikarinen</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.239" level="INFO">Length is 25</msg>
-<status status="PASS" starttime="20220324 16:48:38.238" endtime="20220324 16:48:38.239"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">Length is 16</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
 <kw name="Append To List" library="Collections">
 <arg>${list_of_name}</arg>
 <arg>${name}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20220324 16:48:38.240" endtime="20220324 16:48:38.241"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
-<status status="PASS" starttime="20220324 16:48:38.236" endtime="20220324 16:48:38.241"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </iter>
 <iter>
 <var name="${i}">2</var>
 <kw name="Name" library="FakerLibrary">
 <var>${name}</var>
 <doc>:example 'John Doe'</doc>
-<msg timestamp="20220324 16:48:38.242" level="INFO">${name} = Matti Lahtinen</msg>
-<status status="PASS" starttime="20220324 16:48:38.241" endtime="20220324 16:48:38.242"/>
+<msg timestamp="20220325 17:15:38.778" level="INFO">${name} = Kaija Penttinen</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.778"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.243" level="INFO">Length is 14</msg>
-<status status="PASS" starttime="20220324 16:48:38.242" endtime="20220324 16:48:38.243"/>
+<msg timestamp="20220325 17:15:38.793" level="INFO">Length is 15</msg>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.793"/>
 </kw>
 <kw name="Append To List" library="Collections">
 <arg>${list_of_name}</arg>
 <arg>${name}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20220324 16:48:38.243" endtime="20220324 16:48:38.244"/>
+<status status="PASS" starttime="20220325 17:15:38.793" endtime="20220325 17:15:38.794"/>
 </kw>
-<status status="PASS" starttime="20220324 16:48:38.241" endtime="20220324 16:48:38.245"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.794"/>
 </iter>
 <iter>
 <var name="${i}">3</var>
 <kw name="Name" library="FakerLibrary">
 <var>${name}</var>
 <doc>:example 'John Doe'</doc>
-<msg timestamp="20220324 16:48:38.246" level="INFO">${name} = Pentti Saari-Lindgren</msg>
-<status status="PASS" starttime="20220324 16:48:38.245" endtime="20220324 16:48:38.246"/>
+<msg timestamp="20220325 17:15:38.796" level="INFO">${name} = Elisabeth Hietanen</msg>
+<status status="PASS" starttime="20220325 17:15:38.795" endtime="20220325 17:15:38.796"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.247" level="INFO">Length is 21</msg>
-<status status="PASS" starttime="20220324 16:48:38.246" endtime="20220324 16:48:38.248"/>
+<msg timestamp="20220325 17:15:38.797" level="INFO">Length is 18</msg>
+<status status="PASS" starttime="20220325 17:15:38.796" endtime="20220325 17:15:38.798"/>
 </kw>
 <kw name="Append To List" library="Collections">
 <arg>${list_of_name}</arg>
 <arg>${name}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20220324 16:48:38.248" endtime="20220324 16:48:38.249"/>
+<status status="PASS" starttime="20220325 17:15:38.798" endtime="20220325 17:15:38.799"/>
 </kw>
-<status status="PASS" starttime="20220324 16:48:38.245" endtime="20220324 16:48:38.249"/>
+<status status="PASS" starttime="20220325 17:15:38.795" endtime="20220325 17:15:38.799"/>
 </iter>
 <iter>
 <var name="${i}">4</var>
 <kw name="Name" library="FakerLibrary">
 <var>${name}</var>
 <doc>:example 'John Doe'</doc>
-<msg timestamp="20220324 16:48:38.251" level="INFO">${name} = Irmeli Leppänen</msg>
-<status status="PASS" starttime="20220324 16:48:38.250" endtime="20220324 16:48:38.251"/>
+<msg timestamp="20220325 17:15:38.801" level="INFO">${name} = Marja Salo-Laurila</msg>
+<status status="PASS" starttime="20220325 17:15:38.799" endtime="20220325 17:15:38.801"/>
 </kw>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.252" level="INFO">Length is 15</msg>
-<status status="PASS" starttime="20220324 16:48:38.251" endtime="20220324 16:48:38.252"/>
+<msg timestamp="20220325 17:15:38.802" level="INFO">Length is 18</msg>
+<status status="PASS" starttime="20220325 17:15:38.801" endtime="20220325 17:15:38.802"/>
 </kw>
 <kw name="Append To List" library="Collections">
 <arg>${list_of_name}</arg>
 <arg>${name}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20220324 16:48:38.252" endtime="20220324 16:48:38.254"/>
+<status status="PASS" starttime="20220325 17:15:38.802" endtime="20220325 17:15:38.804"/>
 </kw>
-<status status="PASS" starttime="20220324 16:48:38.250" endtime="20220324 16:48:38.254"/>
+<status status="PASS" starttime="20220325 17:15:38.799" endtime="20220325 17:15:38.804"/>
 </iter>
-<status status="PASS" starttime="20220324 16:48:38.229" endtime="20220324 16:48:38.254"/>
+<status status="PASS" starttime="20220325 17:15:38.778" endtime="20220325 17:15:38.804"/>
 </for>
 <kw name="Should Not Be Empty" library="BuiltIn">
 <arg>${list_of_name}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<msg timestamp="20220324 16:48:38.255" level="INFO">Length is 5</msg>
-<status status="PASS" starttime="20220324 16:48:38.254" endtime="20220324 16:48:38.255"/>
+<msg timestamp="20220325 17:15:38.805" level="INFO">Length is 5</msg>
+<status status="PASS" starttime="20220325 17:15:38.804" endtime="20220325 17:15:38.806"/>
 </kw>
-<msg timestamp="20220324 16:48:38.256" level="INFO">${list} = ['Annikki Hietala-Manninen', 'Kalervo Tanskanen-Anttila', 'Matti Lahtinen', 'Pentti Saari-Lindgren', 'Irmeli Leppänen']</msg>
-<status status="PASS" starttime="20220324 16:48:38.227" endtime="20220324 16:48:38.256"/>
+<msg timestamp="20220325 17:15:38.806" level="INFO">@{list} = [ Miika Savolainen | Emilia Oikarinen | Kaija Penttinen | Elisabeth Hietanen | Marja Salo-Laurila ]</msg>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:38.806"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${list}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220324 16:48:38.257" endtime="20220324 16:48:38.258"/>
+<kw name="Get Selections From User" library="Dialogs">
+<var>${name}</var>
+<arg>Please select:</arg>
+<arg>@{list}</arg>
+<doc>Pauses test execution and asks user to select multiple values.</doc>
+<msg timestamp="20220325 17:15:41.231" level="INFO">${name} = ['Kaija Penttinen']</msg>
+<status status="PASS" starttime="20220325 17:15:38.807" endtime="20220325 17:15:41.232"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${fileName}</var>
-<arg>test.txt</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20220324 16:48:38.260" level="INFO">${fileName} = test.txt</msg>
-<status status="PASS" starttime="20220324 16:48:38.259" endtime="20220324 16:48:38.260"/>
+<kw name="Address" library="FakerLibrary">
+<var>${Address}</var>
+<doc>:example: '791 Crist Parks, Sashabury, IL 86039-9874'</doc>
+<msg timestamp="20220325 17:15:41.247" level="INFO">${Address} = Lentokapteenin kuja 38
+95723 Helsinki</msg>
+<status status="PASS" starttime="20220325 17:15:41.235" endtime="20220325 17:15:41.248"/>
 </kw>
-<kw name="Remove Existing Address File">
-<var>${state}</var>
-<arg>${fileName}</arg>
-<kw name="File Exists" library="file">
-<var>${fileExists}</var>
-<arg>${fileName}</arg>
-<msg timestamp="20220324 16:48:38.263" level="INFO">${fileExists} = True</msg>
-<status status="PASS" starttime="20220324 16:48:38.261" endtime="20220324 16:48:38.263"/>
+<kw name="Get Line" library="String">
+<var>${line2}</var>
+<arg>${Address}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<msg timestamp="20220325 17:15:41.251" level="INFO">${line2} = 95723 Helsinki</msg>
+<status status="PASS" starttime="20220325 17:15:41.250" endtime="20220325 17:15:41.251"/>
 </kw>
-<if>
-<branch type="IF" condition="${fileExists}">
-<kw name="Get File" library="OperatingSystem">
-<var>${FileContent}</var>
-<arg>${fileName}</arg>
-<arg>encoding=UTF-8</arg>
-<doc>Returns the contents of a specified file.</doc>
-<msg timestamp="20220324 16:48:38.265" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220324 16:48:38.273" level="INFO">${FileContent} = ['Heli Miettinen', 'Arvo Kuusela', 'Elias Huotari', 'Johannes Salminen-Nyman', 'Anna Lappalainen'] encoding=UTF-8</msg>
-<status status="PASS" starttime="20220324 16:48:38.263" endtime="20220324 16:48:38.273"/>
+<kw name="Split String" library="String">
+<var>@{post_code_city}</var>
+<arg>${line2}</arg>
+<arg>${SPACE}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220325 17:15:41.254" level="INFO">@{post_code_city} = [ 95723 | Helsinki ]</msg>
+<status status="PASS" starttime="20220325 17:15:41.252" endtime="20220325 17:15:41.254"/>
 </kw>
-<kw name="Remove File" library="OperatingSystem">
-<arg>${fileName}</arg>
-<doc>Removes a file with the given path.</doc>
-<msg timestamp="20220324 16:48:38.275" level="INFO" html="true">Removed file '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20220324 16:48:38.273" endtime="20220324 16:48:38.275"/>
-</kw>
-<kw name="File Should Not Exist" library="OperatingSystem">
-<arg>${fileName}</arg>
-<doc>Fails if the given path points to an existing file.</doc>
-<msg timestamp="20220324 16:48:38.277" level="INFO" html="true">File '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;' does not exist.</msg>
-<status status="PASS" starttime="20220324 16:48:38.275" endtime="20220324 16:48:38.277"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>\n\n Display name of the person whose data is removed in File \n ${FileContent}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220324 16:48:38.277" endtime="20220324 16:48:38.279"/>
-</kw>
-<status status="PASS" starttime="20220324 16:48:38.263" endtime="20220324 16:48:38.280"/>
-</branch>
-<status status="PASS" starttime="20220324 16:48:38.263" endtime="20220324 16:48:38.280"/>
-</if>
-<msg timestamp="20220324 16:48:38.281" level="INFO">${state} = True</msg>
-<status status="PASS" starttime="20220324 16:48:38.260" endtime="20220324 16:48:38.281"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>\n\n Is it File name Exist, then got removed: ${state}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220324 16:48:38.281" endtime="20220324 16:48:38.283"/>
+<kw name="Get Line" library="String">
+<var>${Address}</var>
+<arg>${Address}</arg>
+<arg>0</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<msg timestamp="20220325 17:15:41.255" level="INFO">${Address} = Lentokapteenin kuja 38</msg>
+<status status="PASS" starttime="20220325 17:15:41.254" endtime="20220325 17:15:41.256"/>
 </kw>
 <kw name="Create File" library="OperatingSystem">
 <arg>${fileName}</arg>
-<arg>content=${list} encoding=UTF-8</arg>
+<arg>${name}[0] \n${Address} \n${post_code_city}[0] \n ${post_code_city}[1]</arg>
 <doc>Creates a file with the given content and encoding.</doc>
-<msg timestamp="20220324 16:48:38.287" level="INFO" html="true">Created file '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20220324 16:48:38.284" endtime="20220324 16:48:38.287"/>
+<msg timestamp="20220325 17:15:41.258" level="INFO" html="true">Created file '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20220325 17:15:41.256" endtime="20220325 17:15:41.259"/>
 </kw>
-<kw name="File Exists" library="file">
-<var>${fileExists}</var>
+<kw name="File Should Exist" library="OperatingSystem">
 <arg>${fileName}</arg>
-<msg timestamp="20220324 16:48:38.289" level="INFO">${fileExists} = True</msg>
-<status status="PASS" starttime="20220324 16:48:38.288" endtime="20220324 16:48:38.289"/>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<msg timestamp="20220325 17:15:41.261" level="INFO" html="true">File '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20220325 17:15:41.260" endtime="20220325 17:15:41.262"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${fileExists}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220324 16:48:38.290" endtime="20220324 16:48:38.291"/>
+<kw name="File Should Not Be Empty" library="OperatingSystem">
+<arg>${fileName}</arg>
+<doc>Fails if the specified directory is empty.</doc>
+<msg timestamp="20220325 17:15:41.266" level="INFO" html="true">File '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;' contains 60 bytes.</msg>
+<status status="PASS" starttime="20220325 17:15:41.263" endtime="20220325 17:15:41.266"/>
+</kw>
+<doc>Get Random name and create and insert into file</doc>
+<tag>faker</tag>
+<timeout value="1 minute"/>
+<status status="PASS" starttime="20220325 17:15:38.768" endtime="20220325 17:15:41.267"/>
+</test>
+<test id="s1-t3" name="Checks that the address file contains three lines">
+<kw name="Get File" library="OperatingSystem">
+<var>${FileContent}</var>
+<arg>${fileName}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20220325 17:15:41.271" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt"&gt;C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\test.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20220325 17:15:41.286" level="INFO">${FileContent} = Kaija Penttinen 
+Lentokapteenin kuja 38 
+95723 
+ Helsinki</msg>
+<status status="PASS" starttime="20220325 17:15:41.270" endtime="20220325 17:15:41.286"/>
+</kw>
+<kw name="Get Line" library="String">
+<var>${FileContent}</var>
+<arg>${FileContent}</arg>
+<arg>${3}</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<msg timestamp="20220325 17:15:41.289" level="INFO">${FileContent} =  Helsinki</msg>
+<status status="PASS" starttime="20220325 17:15:41.287" endtime="20220325 17:15:41.289"/>
 </kw>
 <tag>faker</tag>
 <timeout value="1 minute"/>
-<status status="PASS" starttime="20220324 16:48:38.221" endtime="20220324 16:48:38.292"/>
+<status status="PASS" starttime="20220325 17:15:41.268" endtime="20220325 17:15:41.289"/>
 </test>
-<status status="PASS" starttime="20220324 16:48:37.533" endtime="20220324 16:48:38.294"/>
+<status status="PASS" starttime="20220325 17:15:37.944" endtime="20220325 17:15:41.293"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">faker</stat>
+<stat pass="3" fail="0" skip="0">faker</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Task1">Task1</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Task1">Task1</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20220324 16:48:37.534" level="ERROR">Error in file 'C:\Users\Linga-Gaja\Documents\Study\3rd Year\4th\Test Automation\Assignment\week_1\task1.robot' on line 13: Setting variable '' failed: Invalid variable name ''.</msg>
 </errors>
 </robot>
