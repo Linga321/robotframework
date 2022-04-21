@@ -1,0 +1,3 @@
+robot -v portsender:COM8 -v portdecoder:COM7 .\task_4 # for all 
+robot -i notStrict -v portsender:COM8 -v portdecoder:COM7 .\task_4 # All but strict 
+robot -i TextOnly -v portsender:COM8 -v portdecoder:COM7 .\task_4 # Text only test
